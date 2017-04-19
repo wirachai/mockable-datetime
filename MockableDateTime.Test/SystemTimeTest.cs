@@ -18,14 +18,13 @@ namespace MockableDateTime.Test
             var mockDate = new DateTime(2017, 04, 15);
             SystemTime.SetDateTime(mockDate);
 
-            Assert.AreEqual(mockDate, SystemTime.Today);
+            AssertTimeDiffInMillisecond(mockDate, SystemTime.Today);
         }
 
         [Test]
         public void Now_ShouldBeSameAsDateTimeNow()
         {
-            var result = DateTime.Compare(DateTime.Now, SystemTime.Now);
-            Assert.AreEqual(0, result);
+            AssertTimeDiffInMillisecond(DateTime.Now, SystemTime.Now);
         }
 
         [Test]
@@ -34,15 +33,19 @@ namespace MockableDateTime.Test
             var mockDate = new DateTime(2017, 04, 15, 9, 20, 30);
             SystemTime.SetDateTime(mockDate);
 
-            var result = DateTime.Compare(mockDate, SystemTime.Now);
-            Assert.AreEqual(0, result);
+            AssertTimeDiffInMillisecond(mockDate, SystemTime.Now);
         }
 
         [Test]
         public void UtcNow_ShouldBeSameAsDateTimeUtcNow()
         {
-            var result = DateTime.Compare(DateTime.UtcNow, SystemTime.UtcNow);
-            Assert.AreEqual(0, result);
+            AssertTimeDiffInMillisecond(DateTime.UtcNow, SystemTime.UtcNow);
+        }
+
+        private void AssertTimeDiffInMillisecond(DateTime t1, DateTime t2)
+        {
+            var diff = t1 - t2;
+            Assert.IsTrue(Math.Abs(diff.TotalSeconds) < 0.01);
         }
     }
 }
