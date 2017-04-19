@@ -1,7 +1,9 @@
 ﻿using System;
+using ExampleWebApp;
 using ExampleWebApp.Properties;
 using MockableDateTime;
 
+[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(StartupConfig), "Initial")]
 namespace ExampleWebApp
 {
     public class StartupConfig

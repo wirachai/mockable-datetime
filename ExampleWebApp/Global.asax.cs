@@ -9,7 +9,6 @@ namespace ExampleWebApp
     {
         protected void Application_Start()
         {
-            StartupConfig.Initial();
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
