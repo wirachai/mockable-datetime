@@ -1,0 +1,13 @@
+﻿@using MockableDateTime
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h2>Current Time: @DateTime.Today.ToLongDateString() @DateTime.Now.ToLongTimeString()</h2>
+    <h2>System Time: @SystemTime.Today.ToLongDateString() @SystemTime.Now.ToLongTimeString()</h2>
+    <hr/>
+    <div class="text-center">
+        <a href="@Url.Action("Index", "Home")" class="btn btn-primary btn-block">Update</a>
+    </div>
+</div>
